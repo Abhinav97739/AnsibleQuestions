@@ -1,0 +1,15 @@
+---
+- name: 'Install required packages'
+  hosts: localhost
+  become: yes
+  vars:
+    packages:
+      - httpd
+      - make
+      - vim
+  tasks:
+    - yum:
+        name: '{{ items }}'
+        state: present
+      loop: '{{ packages }}'
+      
